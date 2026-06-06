@@ -1,0 +1,36 @@
+---
+title: "Final Q2"
+author: "your name here"
+date: "2026-05-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tigerstats)
+fishData = read.csv('fish.csv')
+```
+
+Final Q2.   This question is based on the Fish.csv data set.   The research questions is this:  "For the Bream species, What is the best predictor of the fish's weight -- Height, Width, or Length3?
+
+In the Fish.csv data set, the variables are Species and Weight.
+
+Your mission, should you decide to accept, is to analyze the Fish data for these species, and answer the research question. 
+
+# Introduction
+
+# Methods
+
+# Data Description
+
+## Graphial Description 
+
+## Numberical Description
+
+# Inferential results
+
+# Summary and Conclustions
+
+
+
