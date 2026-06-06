@@ -1,6 +1,6 @@
 ---
 title: "Final Q2"
-author: "your name here"
+author: "Giovanni Asencio"
 date: "2026-05-15"
 output: html_document
 ---
@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tigerstats)
 fishData = read.csv('fish.csv')
+bream <- fishData %>%
+  filter(Species == "Bream")
 ```
 
 Final Q2.   This question is based on the Fish.csv data set.   The research questions is this:  "For the Bream species, What is the best predictor of the fish's weight -- Height, Width, or Length3?
@@ -19,18 +21,61 @@ In the Fish.csv data set, the variables are Species and Weight.
 Your mission, should you decide to accept, is to analyze the Fish data for these species, and answer the research question. 
 
 # Introduction
-
+This project examines Bream fish from the Fish.csv data set to determine which variable is the best predictor of fish weight. The three possible predictors are Height, Width, and Length3. Linear regression models will be used and compared using adjusted R-squared values.
 # Methods
-
+Weight is a numerical response variable and Height, Width, and Length3 are numerical explanatory variables. Three simple linear regression models will be created and compared. The model with the highest adjusted R-squared value will be considered the best predictor of fish weight.
 # Data Description
 
-## Graphial Description 
+## Graphical Description 
+### Weight vs Height
 
-## Numberical Description
+```{r}
+plot(Weight ~ Height, data=bream)
+```
 
+### Weight vs Width
+
+```{r}
+plot(Weight ~ Width, data=bream)
+```
+
+### Weight vs Length3
+
+```{r}
+plot(Weight ~ Length3, data=bream)
+```
+## Numerical Description
+```{r}
+summary(bream[,c("Weight","Height","Width","Length3")])
+```
 # Inferential results
+### Model 1: Weight ~ Height
 
+```{r}
+M1 <- lm(Weight ~ Height, data=bream)
+summary(M1)
+```
+
+### Model 2: Weight ~ Width
+
+```{r}
+M2 <- lm(Weight ~ Width, data=bream)
+summary(M2)
+```
+
+### Model 3: Weight ~ Length3
+
+```{r}
+M3 <- lm(Weight ~ Length3, data=bream)
+summary(M3)
+```
 # Summary and Conclustions
+The scatterplots showed positive linear relationships between fish weight and each of the three predictor variables. As Height, Width, and Length3 increase, fish weight tends to increase.
 
+Three simple linear regression models were compared using Adjusted R-squared values. The model using Height as the predictor had the highest Adjusted R-squared value of 0.9282. The model using Length3 had an Adjusted R-squared value of 0.8939, while the model using Width had an Adjusted R-squared value of 0.8518.
+
+Because the Height model has the largest Adjusted R-squared value, it explains the greatest proportion of variation in fish weight. Therefore, Height is the best predictor of fish weight among the three variables considered.
+
+The models ranked from best to worst are Height, Length3, and Width.
 
 
